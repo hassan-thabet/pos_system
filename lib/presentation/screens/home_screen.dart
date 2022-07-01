@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Mohammed Abd-Elmoaty',
+          'Store Name',
           style: TextStyle(
               fontFamily: 'Handlee',
               color: Colors.white,

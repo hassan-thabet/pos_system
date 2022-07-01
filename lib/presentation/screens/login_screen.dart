@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 height: 20,
               ),
               const Text(
-                'Mohammed Abd-Elmoaty',
+                'Store Name',
                 style: TextStyle(
                     fontFamily: 'Handlee',
                     color: Colors.black87,
