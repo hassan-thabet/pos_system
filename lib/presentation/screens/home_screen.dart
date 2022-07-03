@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:pos_system/presentation/widgets/custom_statistics_card.dart';
+
+import '../widgets/custom_list_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,8 +17,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //double width = MediaQuery.of(context).size.width;
+    //double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Store Name',
@@ -39,54 +46,65 @@ class HomeScreen extends StatelessWidget {
         elevation: 0.0,
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Center(
+                child: Column(
+                  children: const [
+                    CircleAvatar(
+                      radius: 52,
+                      foregroundImage:
+                          AssetImage("assets/images/user_image.jpg"),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('Username'),
+                  ],
+                ),
+              ),
             ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
+            const CustomListTile('Dashboard', Icons.home_outlined),
+            const CustomListTile('Reports', Icons.receipt_long_rounded),
+            const CustomListTile('Categories', Icons.category_outlined),
+            const CustomListTile('Products', Icons.widgets_outlined),
+            const CustomListTile(
+                'Inventory Management', Icons.inventory_2_outlined),
+            const CustomListTile('Price Rules', Icons.monetization_on_outlined),
+            const CustomListTile('Gift Cards', Icons.card_giftcard),
+            const Divider(),
+            const CustomListTile('Customers', Icons.group_outlined),
+            const CustomListTile('Employees', Icons.account_circle_outlined),
+            const Divider(),
+            const CustomListTile('Settings', Icons.settings_outlined),
+            const CustomListTile('Logout', Icons.login),
           ],
         ),
       ),
-      body: Row(
+      body: Column(
         children: [
-          Expanded(
-              flex: 2,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Column(children: const [
-                  Text(
-                    "الفاتورة",
-                    style: TextStyle(fontSize: 30),
-                  )
-                ]),
-              )),
-          Expanded(
-            flex: 3,
-            child: Container(),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  CustomStatisticsCard('Total Sales', '23',
+                      Icons.add_shopping_cart_outlined, Colors.blueAccent),
+                  CustomStatisticsCard(
+                      'Products', '14', Icons.stream, Colors.redAccent),
+                  CustomStatisticsCard(
+                      'Inventory', '2', Icons.details, Colors.amber),
+                  CustomStatisticsCard('Total Sales', '3341 LE',
+                      Icons.dashboard_rounded, Colors.green),
+                ],
+              ),
+            ),
           ),
         ],
       ),
