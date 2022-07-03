@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         title: const Text(
           'Store Name',
@@ -28,8 +29,8 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Center(
                 child: Text(
-                  getFormattedDate(DateTime.now().toString())
-                      + ' - ' +
+              getFormattedDate(DateTime.now().toString()) +
+                  ' - ' +
                   DateFormat.jm().format(DateTime.now()),
               style: const TextStyle(fontSize: 18.0),
             )),
@@ -68,8 +69,26 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const Center(
-        child: Text('HomeScreen'),
+      body: Row(
+        children: [
+          Expanded(
+              flex: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30)),
+                child: Column(children: const [
+                  Text(
+                    "الفاتورة",
+                    style: TextStyle(fontSize: 30),
+                  )
+                ]),
+              )),
+          Expanded(
+            flex: 3,
+            child: Container(),
+          ),
+        ],
       ),
     );
   }
